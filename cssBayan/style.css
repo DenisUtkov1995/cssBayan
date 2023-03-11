@@ -1,72 +1,89 @@
 
-* {
+*,
+*:before,
+*:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background-color: beige;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  background-color: beige;
 }
 
-.accordion {
-    transform: translateZ(0);
-    background: white;
-    border-bottom: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-  }
-  
-  .accordion>.accordion-toggle {
-    display: none;
-    position: absolute;
-    opacity: 0;
-  }
-  
-  .accordion>label {
-    display: block;
-    position: relative;
-    height: 50px;
-    line-height: 50px;
-    padding: 0 20px;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    background: #ecebec;
-    color: #555;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .accordion>label:after {
-    content: '';
-    position: absolute;
-    top: 12px;
-    right: 20px;
-    width: 12px;
-    height: 12px;
-    border-left: 2px solid #555;
-    border-top: 2px solid #555;
-    transform: rotate(-135deg);
-    transition: 0.4s transform;
-  }
-  
-  .accordion>section {
-    overflow: hidden;
-    height: 0;
-    transition: all .4s;
-  }
-  
-  .accordion>.accordion-toggle:checked~label:after {
-    transform: rotate(45deg);
-    top: 16px;
-  }
-  
-  .accordion>.accordion-toggle:checked~section {
-    height: 50px;
-  }
-  
-  .accordion>section p {
-    margin: 15px 0;
-    padding: 0 20px;
-  }
+.title-accordion {
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+/*container*/
+
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.meme-item {
+  border: 1px solid rgb(150, 2, 2);
+  margin-bottom: 5px;
+}
+
+.meme-title {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 15px;
+  transition: background .2s
+  ease-out;
+}
+
+.meme-title::after {
+  content: "";
+  border-style: solid;
+  border-width: 10px 5px 0 5px;
+  border-color: #01070d transparent transparent transparent;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+}
+
+.meme-title:hover {
+  background-color: rgb(150, 2, 2);
+}
+
+.meme-input {
+  width: 0;
+  height: 0;
+  appearance: none;
+  position: absolute;
+}
+
+.meme-input:checked ~ .meme-title {
+  background-color: rgb(150, 2, 2);
+}
+
+.meme-input:checked ~ .meme-title::after {
+  border-style: solid;
+  border-width: 0 5px 10px 5px;
+  border-color: transparent transparent #01070d transparent;
+}
+
+.meme-input:checked ~ .meme {
+  display: block;
+}
+
+.meme {
+  display: none;
+  font-size: 14px;
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(83, 80, 240);
+  margin: 20px auto;
+  padding: 10px 15px;
+}
